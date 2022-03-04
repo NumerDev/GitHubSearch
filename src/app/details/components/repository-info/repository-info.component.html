@@ -1,0 +1,35 @@
+<button class="back__button" routerLink="">Back to main page</button>
+<section class="details">
+  <div *ngIf="data" class="wrapper">
+    <header class="title">{{ data.name }}</header>
+    <div class="content">
+      <div class="avatar">
+        <img src="{{ data.owner.avatar_url }}" alt="" />
+      </div>
+
+      <div class="info">
+        <p>
+          <span class="data__title">Author: </span>
+          {{ data.owner.login }}
+        </p>
+
+        <p>
+          <span class="data__title">Description: </span>
+          {{ data.description }}
+        </p>
+
+        <p>
+          <span class="data__title">Watchers count: </span>
+          {{ data.watchers_count }}
+        </p>
+
+        <p>
+          <span class="data__title">Forks count: </span>
+          {{ data.forks_count }}
+        </p>
+
+        <a class="redirect" href="{{ data.html_url }}">Go to repo</a>
+      </div>
+    </div>
+  </div>
+</section>
