@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
+/* Types of object data from request */
 export interface RepositoryOwner {
   id: number;
   login: string;
@@ -26,7 +27,8 @@ export class GitHubRequestService {
 
   constructor(private http: HttpClient) {}
 
-  searchRepos(name: string, limit: number) {
+  /* Get request for repository and filtered for repository only  */
+  searchRepository(name: string, limit: number) {
     return this.http
       .get<{ items: Repository[] }>(
         `${this.rootUrl}/search/repositories?q=${name}&per_page=${limit}`
@@ -34,6 +36,7 @@ export class GitHubRequestService {
       .pipe(map((res) => res.items));
   }
 
+  /* Get request for repository by owner and name */
   getRepository(owner: string, name: string) {
     return this.http.get<Repository>(`${this.rootUrl}/repos/${owner}/${name}`);
   }

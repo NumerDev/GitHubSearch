@@ -15,8 +15,10 @@ export class SearchViewComponent {
 
   /* Get limited repositories from GitHub by name  */
   getRepositories(name: string, limit: number): Subscription {
-    return this.gitHubService.searchRepos(name, limit).subscribe((repos) => {
-      this.items = repos;
-    });
+    return this.gitHubService
+      .searchRepository(name, limit)
+      .subscribe((repos) => {
+        this.items = repos;
+      });
   }
 }
