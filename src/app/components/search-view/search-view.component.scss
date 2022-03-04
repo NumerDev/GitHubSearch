@@ -1,0 +1,148 @@
+@import "../../../styles/functions";
+@import "../../../styles/colors";
+
+.wrapper {
+  @include flex(flex-start, center, column);
+  height: 100vh;
+  padding-top: 3rem;
+
+  .header__title {
+    h2 {
+      font-size: rem(36);
+      font-weight: 400;
+      letter-spacing: rem(3.6);
+
+      .name {
+        background: url("../../../assets/name_bg.svg") center/cover no-repeat;
+      }
+    }
+  }
+
+  .search {
+    @include flex(center, center, column);
+    margin-top: 3rem;
+
+    .search__bar {
+      width: rem(600);
+      height: rem(60);
+      border: none;
+      background-color: $light-grey;
+      border-bottom: rem(5) solid $black;
+      text-align: center;
+      font-size: rem(24);
+      outline: none;
+      padding-bottom: rem(0.5);
+
+      &::placeholder {
+        font-size: rem(24);
+      }
+    }
+
+    .search__button {
+      width: rem(300);
+      height: rem(50);
+      background-color: transparent;
+      font-size: rem(20);
+      margin-top: 3rem;
+      position: relative;
+
+      &::before,
+      &::after {
+        position: absolute;
+        width: rem(300);
+        height: rem(50);
+        transition: top 0.2s ease-in-out, left 0.2s ease-in-out;
+      }
+
+      &::before {
+        border: rem(2) solid $black;
+        top: rem(-5);
+        left: rem(5);
+        z-index: -10;
+      }
+
+      &::after {
+        background-color: $green;
+        top: rem(5);
+        left: rem(-5);
+        z-index: -12;
+      }
+
+      &:hover {
+        &::before {
+          top: rem(5);
+          left: rem(-5);
+        }
+        &::after {
+          top: rem(-5);
+          left: rem(5);
+        }
+      }
+    }
+  }
+
+  .repositories {
+    @include flex(center, center, column);
+    padding: 5rem;
+
+    .empty {
+      font-size: rem(28);
+      letter-spacing: rem(3.6);
+      color: $dark-grey;
+    }
+
+    .repo__container {
+      @include flex(normal, center);
+      width: rem(500);
+      height: rem(75);
+      background-color: #f8f8f8;
+      margin: 0.5rem 0;
+      border-radius: rem(15);
+      box-shadow: rem(0) rem(0) rem(1) 0 $black;
+      cursor: pointer;
+
+      &:hover {
+        .repo__details {
+          &::after {
+            border-color: $white $white transparent transparent;
+            transition: border-color 0.2s ease-in-out;
+          }
+        }
+      }
+
+      .repo__avatar {
+        margin: 0 1rem;
+        width: rem(50);
+        height: rem(50);
+        border: rem(2) solid $black;
+      }
+
+      .repo__info {
+        @include flex(space-around, stretch, column);
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+        span {
+          font-weight: bold;
+        }
+      }
+
+      .repo__details {
+        @include full-flex;
+        width: rem(60);
+        height: 100%;
+        background-color: $dark-grey;
+        border-radius: 0 rem(15) rem(15) 0;
+
+        &::after {
+          width: rem(15);
+          height: rem(15);
+          border: rem(3) solid;
+          border-color: $grey $grey transparent transparent;
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+}

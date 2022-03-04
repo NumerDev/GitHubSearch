@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
+import { SearchViewComponent } from './components/search-view/search-view.component';
 import { WildcardComponent } from './components/wildcard/wildcard.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AppComponent,
+    component: SearchViewComponent,
   },
   {
     path: '**',

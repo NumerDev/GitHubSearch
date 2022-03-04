@@ -1,0 +1,37 @@
+<main class="wrapper">
+  <header class="header__title">
+    <h2>GitHub repository search by <span class="name">Numer</span></h2>
+  </header>
+
+  <section class="search">
+    <input
+      class="search__bar"
+      type="text"
+      placeholder="What are you looking for?"
+      #search
+    />
+    <button
+      class="search__button"
+      (click)="search.value && getRepositories(search.value, 10)"
+    >
+      Search for repository
+    </button>
+  </section>
+
+  <section class="repositories">
+    <p class="empty" *ngIf="!items.length">I'm empty :(</p>
+    <div
+      class="repo__container"
+      *ngFor="let item of items"
+      routerLink="details/{{ item.owner.login }}/{{ item.name }}"
+    >
+      <img class="repo__avatar" src="{{ item.owner.avatar_url }}" alt="" />
+      <div class="repo__info">
+        <p><span>Repository name: </span>{{ item.name }}</p>
+        <p><span>Author: </span>{{ item.owner.login }}</p>
+      </div>
+      <button class="repo__details"></button>
+    </div>
+  </section>
+</main>
+<router-outlet></router-outlet>
